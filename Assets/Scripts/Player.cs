@@ -39,14 +39,14 @@ public class Player : MonoBehaviour
 
 
         //make sure we can move in y
-        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Math.Abs(moveDelta.y*Time.deltaTime*2),LayerMask.GetMask("Player","Blocking"));
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Player","Blocking"));
         if(hit.collider == null)
         {
             //make fish move
             transform.Translate(0, moveDelta.y * Time.deltaTime * 2, 0);
         }
 
-        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Math.Abs(moveDelta.x * Time.deltaTime*2), LayerMask.GetMask("Player", "Blocking"));
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Player", "Blocking"));
         if (hit.collider == null)
         {
             //make fish move
