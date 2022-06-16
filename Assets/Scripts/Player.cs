@@ -5,22 +5,20 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 
-public class Player : MonoBehaviour
+public class Player : Collidable
 {
-    private BoxCollider2D boxCollider;
+    //INHERITED
+    //private BoxCollider2D boxCollider;
     private Vector3 moveDelta;
     private RaycastHit2D hit;
+    public float playerMass  = 1.06f;
 
-    private void Start()
+
+    protected override void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
     }
-/*
-    private void onEatingFish()
-    {
 
-    }
-*/
     private void FixedUpdate()
     {
 
@@ -32,10 +30,10 @@ public class Player : MonoBehaviour
         Vector3 currentScale = transform.localScale;
 
         if (moveDelta.x > 0)
-            transform.localScale = new Vector3(Math.Abs(currentScale.x),currentScale.y,1);
+            transform.localScale = new Vector3(Math.Abs(currentScale.x),currentScale.y, currentScale.z);
 
         else if (moveDelta.x < 0)
-            transform.localScale = new Vector3(-Math.Abs(currentScale.x), currentScale.y, 1);
+            transform.localScale = new Vector3(-Math.Abs(currentScale.x), currentScale.y, currentScale.z);
 
 
         //make sure we can move in y
@@ -58,4 +56,27 @@ public class Player : MonoBehaviour
         //Debug.Log(x);
         //Debug.Log(y);
     }
+
+    protected void ReceiveMass(float size)
+    {
+        Vector3 currentScale = transform.localScale;
+
+        if (size < playerMass)
+        {
+            playerMass = playerMass + 1.05f;
+            transform.localScale = new Vector3(Math.Abs(currentScale.x * 1.05f), currentScale.y * 1.05f, currentScale.z);
+        }
+        else
+        {
+            
+            Destroy(gameObject);
+            //game over
+        }
+
+    }
+
+ 
+
+
+
 }

@@ -6,14 +6,19 @@ using UnityEngine;
 public class Carrot : Collectable
 {
     public Sprite eatenCarrot;
-    public int mass = 10;
-    protected override void OnCollect()
+    public float massCarrot = 1.05f;
+    protected override void OnCollect(Collider2D coll)
     {
         if(collected == false)
         {
             collected = true;
-            GetComponent<SpriteRenderer>().sprite = eatenCarrot;
-            Debug.Log("Grant " + mass + " mass");
+
+            
+
+            coll.SendMessage("ReceiveMass", massCarrot);
+
+            Debug.Log("Grant " + massCarrot + " mass");
+            Destroy(gameObject);
         }
     }
 }

@@ -11,11 +11,11 @@ public class Collectable : Collidable
     {
         if (coll.name == "Player")
         {
-            OnCollect();
+            OnCollect(coll);
         }
     }
 
-    protected virtual void OnCollect()
+    protected virtual void OnCollect(Collider2D coll)
     {
         collected = true;
     }
