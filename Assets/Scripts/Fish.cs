@@ -6,7 +6,7 @@ public class Fish : Collectable
 {
 
     public float fishMass = 1.1f;
-    public float size = 16f;
+    public float size;
 
     protected override void OnCollide(Collider2D coll)
     {

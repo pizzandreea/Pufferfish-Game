@@ -9,8 +9,12 @@ public class FallingCarrot : MonoBehaviour
 
     void Update()
     {
+        Vector3 currentPosition = transform.position;
         movement = new Vector3(0, direction, 0);
-        transform.position = transform.position + movement * Time.deltaTime;
+        if (currentPosition.y >= -6)
+            transform.position = transform.position + movement * Time.deltaTime;
+        else
+            Destroy(gameObject);
     }
 
 }

@@ -9,8 +9,12 @@ public class FishRight : MonoBehaviour
 
     void Update()
     {
+        Vector3 currentPosition = transform.position;
         movement = new Vector3(direction, 0, 0);
-        transform.position = transform.position + movement * Time.deltaTime;
+        if (currentPosition.x <= 9)
+            transform.position = transform.position + movement * Time.deltaTime;
+        else
+            Destroy(gameObject);
     }
 
     /*  private void OnCollisionStay(Collision coll)

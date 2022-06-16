@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1504616168444504874}
   - component: {fileID: 1504616168444504875}
   - component: {fileID: 2707731432350707015}
+  - component: {fileID: 8718018769372606308}
   m_Layer: 0
   m_Name: FishRight
   m_TagString: Untagged
@@ -124,3 +125,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.04, y: 0.84}
   m_EdgeRadius: 0
+--- !u!114 &8718018769372606308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504616168444504871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a92658d049f9540aacd7591f1a12e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  fishMass: 1.1
+  size: 16
