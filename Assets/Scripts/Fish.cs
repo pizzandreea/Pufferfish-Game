@@ -1,24 +1,27 @@
 using System.Collections;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class Fish : MonoBehaviour
+public class Fish : Collectable
 {
-    private int direction = 1;
-    private Vector3 movement;
 
-    void Update()
+    public float fishMass = 1.1f;
+    public float size;
+
+    protected override void OnCollide(Collider2D coll)
     {
-        movement = new Vector3(direction, 0, 0);
-        transform.position = transform.position + movement * Time.deltaTime;
+        
+        if (coll.name == "Player")
+        {
+            
+            // in functia asta daca nu poate sa l mnanance dam destroy player si game over
+            coll.SendMessage("ReceiveMass", size);
+            Destroy(gameObject);
+        }
+
+
     }
 
-  /*  private void OnCollisionStay(Collision coll)
-    {
-        if (coll.gameObject.CompareTag("Box"))
-            direction = direction * -1;
-    }*/
+
+    
 }

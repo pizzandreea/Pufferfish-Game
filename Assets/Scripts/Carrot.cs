@@ -1,20 +1,24 @@
 using System.Collections;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-
-public class Carrot : MonoBehaviour
+public class Carrot : Collectable
 {
-    private int direction = -1;
-    private Vector3 movement;
-
-    void Update()
+    public Sprite eatenCarrot;
+    public float massCarrot = 1.05f;
+    protected override void OnCollect(Collider2D coll)
     {
-        movement = new Vector3(0, direction, 0);
-        transform.position = transform.position + movement * Time.deltaTime;
-    }
+        if(collected == false)
+        {
+            collected = true;
 
-  
+            
+
+            coll.SendMessage("ReceiveMass", massCarrot);
+
+            Debug.Log("Grant " + massCarrot + " mass");
+            Destroy(gameObject);
+        }
+    }
 }
