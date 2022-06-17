@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fish : MonoBehaviour
+public class Fish : Collectable
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public float fishMass = 1.1f;
+    public float size;
+
+    protected override void OnCollide(Collider2D coll)
     {
         
+        if (coll.name == "Player")
+        {
+            
+            // in functia asta daca nu poate sa l mnanance dam destroy player si game over
+            coll.SendMessage("ReceiveMass", size);
+            Destroy(gameObject);
+        }
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    
 }
